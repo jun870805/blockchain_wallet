@@ -1,0 +1,32 @@
+name: blockchain_wallet
+description: A blockchain wallet developed with flutter.
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.19.5 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  assets:
+    - assets/images/
+
+  fonts:
+    - family: NotoSans
+      fonts:
+        - asset: assets/fonts/NotoSans-Bold.ttf
+        - asset: assets/fonts/NotoSans-Medium.ttf
+        - asset: assets/fonts/NotoSans-Regular.ttf
+    - family: EXIcons
+      fonts:
+        - asset: assets/fonts/EXIcons.ttf
