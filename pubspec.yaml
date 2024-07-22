@@ -10,7 +10,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.17.0
+  flutter_riverpod: ^2.0.0
   cupertino_icons: ^1.0.2
+  shared_preferences: ^2.0.0
 
 dev_dependencies:
   flutter_test:
@@ -69,3 +74,6 @@ flutter:
     # - family: BWIcons
     #   fonts:
     #     - asset: assets/fonts/BWIcons.ttf
+
+flutter_intl:
+  enabled: true

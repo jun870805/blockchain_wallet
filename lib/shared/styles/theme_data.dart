@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'styles.dart';
+import 'package:blockchain_wallet/shared/styles/styles.dart';
 
 // 使用方法：Theme.of(context).extension<BWThemeData>()!.color.title
 
