@@ -29,7 +29,7 @@ Color _getUnfocusColor(BuildContext context) {
 List<BoxShadow> _getNavigationBarBoxShadow(BuildContext context) {
   BWThemeData themeData = Theme.of(context).extension<BWThemeData>()!;
 
-  return themeData.shadow.block;
+  return themeData.shadow.light;
 }
 
 class NavigationPage extends StatefulWidget {
