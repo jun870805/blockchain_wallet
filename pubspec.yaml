@@ -23,6 +23,8 @@ dev_dependencies:
   flutter_lints: ^2.0.0
 
 flutter:
+  uses-material-design: true
+
   assets:
     - assets/images/
 
@@ -70,7 +72,6 @@ flutter:
           weight: 700
         - asset: assets/fonts/MicrosoftJhengHei/MicrosoftJhengHei-Regular.ttf
           weight: 400
-
     # - family: BWIcons
     #   fonts:
     #     - asset: assets/fonts/BWIcons.ttf

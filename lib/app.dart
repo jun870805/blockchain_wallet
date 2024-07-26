@@ -1,5 +1,6 @@
 import 'package:blockchain_wallet/core/providers/locale_provider.dart';
 import 'package:blockchain_wallet/core/providers/theme_provider.dart';
+import 'package:blockchain_wallet/features/navigation/navigation.dart';
 import 'package:blockchain_wallet/generated/l10n.dart';
 import 'package:blockchain_wallet/shared/styles/styles.dart';
 import 'package:blockchain_wallet/features/home_page/presentation/screens/home_page.dart';
@@ -18,7 +19,11 @@ class MyApp extends ConsumerWidget {
 
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData.light(useMaterial3: true).copyWith(
+      theme: ThemeData(
+        useMaterial3: true,
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
+      ).copyWith(
         extensions: <ThemeExtension<BWThemeData>>[
           const BWThemeData(
             color: BWColor.bright(),
@@ -47,7 +52,7 @@ class MyApp extends ConsumerWidget {
       ],
       supportedLocales: S.delegate.supportedLocales,
       locale: locale,
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const NavigationPage(),
     );
   }
 }
