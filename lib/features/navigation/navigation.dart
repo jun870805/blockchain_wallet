@@ -76,13 +76,13 @@ class _NavigationPageState extends State<NavigationPage> {
                   elevation: 0,
                   items: const <BottomNavigationBarItem>[
                     BottomNavigationBarItem(
-                      icon: Icon(Icons.wallet_outlined),
-                      activeIcon: Icon(Icons.wallet),
+                      icon: Icon(Icons.account_balance_wallet_outlined),
+                      activeIcon: Icon(Icons.account_balance_wallet),
                       label: 'wallet',
                     ),
                     BottomNavigationBarItem(
-                      icon: Icon(Icons.history_outlined),
-                      activeIcon: Icon(Icons.history),
+                      icon: Icon(Icons.access_time_outlined),
+                      activeIcon: Icon(Icons.access_time_filled),
                       label: 'history',
                     ),
                     BottomNavigationBarItem(
