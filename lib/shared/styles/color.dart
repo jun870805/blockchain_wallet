@@ -25,6 +25,9 @@ class BWColor {
     this.neutral13 = const Color(0xFFEDEDED),
     this.neutral14 = const Color(0xFFFFFFFF),
     this.background = const Color(0xFFFFFFFF),
+    this.background01 = const Color(0xFFFAFAFA),
+    this.background02 = const Color(0xFFF5F5F5),
+    this.background03 = const Color(0xFFE2E2E2),
     this.title = const Color(0xFF121212),
     this.article = const Color(0xFF373737),
     this.note = const Color(0xFF6D6D6D),
@@ -73,6 +76,9 @@ class BWColor {
     this.neutral13 = const Color(0xFFEDEDED),
     this.neutral14 = const Color(0xFFFFFFFF),
     this.background = const Color(0xFF121212),
+    this.background01 = const Color(0xFF1A1A1A),
+    this.background02 = const Color(0xFF262626),
+    this.background03 = const Color(0xFF333333),
     this.title = const Color(0xFFFFFFFF),
     this.article = const Color(0xFFDBDBDB),
     this.note = const Color(0xFFA4A4A4),
@@ -123,6 +129,10 @@ class BWColor {
   final Color neutral14;
 
   final Color background;
+  final Color background01;
+  final Color background02;
+  final Color background03;
+
   final Color title;
   final Color article;
   final Color note;
