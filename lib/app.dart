@@ -3,7 +3,6 @@ import 'package:blockchain_wallet/core/providers/theme_provider.dart';
 import 'package:blockchain_wallet/features/navigation/navigation.dart';
 import 'package:blockchain_wallet/generated/l10n.dart';
 import 'package:blockchain_wallet/shared/styles/styles.dart';
-import 'package:blockchain_wallet/features/home_page/presentation/screens/home_page.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -23,6 +22,7 @@ class MyApp extends ConsumerWidget {
         useMaterial3: true,
         splashColor: Colors.transparent,
         highlightColor: Colors.transparent,
+        scaffoldBackgroundColor: Colors.transparent,
       ).copyWith(
         extensions: <ThemeExtension<BWThemeData>>[
           const BWThemeData(
@@ -32,7 +32,12 @@ class MyApp extends ConsumerWidget {
           ),
         ],
       ),
-      darkTheme: ThemeData.dark(useMaterial3: true).copyWith(
+      darkTheme: ThemeData(
+        useMaterial3: true,
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
+        scaffoldBackgroundColor: Colors.transparent,
+      ).copyWith(
         extensions: <ThemeExtension<BWThemeData>>[
           const BWThemeData(
             color: BWColor.dark(),

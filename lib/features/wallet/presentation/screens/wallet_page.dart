@@ -1,17 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:blockchain_wallet/shared/styles/styles.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+import '../../../../shared/components/components.dart';
 
-  final String title;
+Color _getBackgroundColor(BuildContext context) {
+  BWThemeData themeData = Theme.of(context).extension<BWThemeData>()!;
 
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  return themeData.color.background;
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class WalletPage extends StatefulWidget {
+  const WalletPage({super.key});
+
+  @override
+  State<WalletPage> createState() => _WalletPageState();
+}
+
+class _WalletPageState extends State<WalletPage> {
   int _counter = 0;
+  int? _selectedId;
 
   void _incrementCounter() {
     setState(() {
@@ -19,19 +26,37 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  PreferredSizeWidget _buildAppBar(BuildContext context) {
+    return BWAppBar(
+      // title: 'ssss',
+      titleWidget: BWDropdownButton(
+        width: 120,
+        items: <MenuItem>[
+          MenuItem(
+            id: 0,
+            title: 'Apple',
+            image:
+                'https://ipfs.boxtradex.io/ipfs/Qma4uqU9rg7PoLGsWaUDmELesmC45bBUKp3xVH2SeaM9Bf?filename=sporte_logo.jpg',
+          ),
+          MenuItem(id: 1, title: 'Mango'),
+          MenuItem(id: 2, title: 'Banana'),
+          MenuItem(id: 3, title: 'Peach'),
+        ],
+        selectedId: _selectedId,
+        onChanged: (int? id) {
+          _selectedId = id;
+          setState(() {});
+        },
+        hintText: 'Choose your favorite Fruit',
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          '妳好',
-          style: TextStyle(
-            fontFamily: 'MicrosoftJhengHei',
-            fontWeight: FontWeight.normal,
-            color: Theme.of(context).extension<BWThemeData>()!.color.title,
-          ),
-        ),
-      ),
+      backgroundColor: _getBackgroundColor(context),
+      appBar: _buildAppBar(context),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

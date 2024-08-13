@@ -1,3 +1,4 @@
+import 'package:blockchain_wallet/features/wallet/presentation/screens/wallet_page.dart';
 import 'package:blockchain_wallet/shared/styles/styles.dart';
 import 'package:flutter/material.dart';
 
@@ -43,7 +44,7 @@ class _NavigationPageState extends State<NavigationPage> {
   int _selectedIndex = 0;
 
   static const List<Widget> _widgetOptions = <Widget>[
-    Text('wallet'),
+    WalletPage(),
     Text('history'),
     Text('settings'),
   ];
