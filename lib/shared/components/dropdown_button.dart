@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../styles/theme_data.dart';
 
-const double _kDropdownMenuMaxHeight = 160.0;
+const double _kDropdownMenuMaxHeight = 208.0;
 
 const double _kDropdownButtonIconSize = 16.0;
 
