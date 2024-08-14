@@ -35,6 +35,12 @@ class BWColor {
     this.success = const Color(0xFF88CC88),
     this.warning = const Color(0xFFF0CF57),
     this.error = const Color(0xFFF06F6F),
+    this.transparent0001 = const Color.fromRGBO(255, 255, 255, 0.1),
+    this.transparent0002 = const Color.fromRGBO(255, 255, 255, 0.5),
+    this.transparent0003 = const Color.fromRGBO(255, 255, 255, 0.9),
+    this.transparent1001 = const Color.fromRGBO(18, 18, 18, 0.02),
+    this.transparent1002 = const Color.fromRGBO(18, 18, 18, 0.1),
+    this.transparent1003 = const Color.fromRGBO(18, 18, 18, 0.7),
     this.gradientPrimary = const LinearGradient(
       begin: Alignment.centerLeft,
       end: Alignment.centerRight,
@@ -86,6 +92,12 @@ class BWColor {
     this.success = const Color(0xFF88CC88),
     this.warning = const Color(0xFFF0CF57),
     this.error = const Color(0xFFF06F6F),
+    this.transparent0001 = const Color.fromRGBO(18, 18, 18, 0.1),
+    this.transparent0002 = const Color.fromRGBO(18, 18, 18, 0.5),
+    this.transparent0003 = const Color.fromRGBO(18, 18, 18, 0.9),
+    this.transparent1001 = const Color.fromRGBO(250, 250, 250, 0.05),
+    this.transparent1002 = const Color.fromRGBO(250, 250, 250, 0.2),
+    this.transparent1003 = const Color.fromRGBO(250, 250, 250, 0.7),
     this.gradientPrimary = const LinearGradient(
       begin: Alignment.centerLeft,
       end: Alignment.centerRight,
@@ -141,6 +153,13 @@ class BWColor {
   final Color success;
   final Color warning;
   final Color error;
+
+  final Color transparent0001;
+  final Color transparent0002;
+  final Color transparent0003;
+  final Color transparent1001;
+  final Color transparent1002;
+  final Color transparent1003;
 
   final Gradient gradientPrimary;
   final Gradient gradientSecondary;
