@@ -17,14 +17,8 @@ class WalletPage extends StatefulWidget {
 }
 
 class _WalletPageState extends State<WalletPage> {
-  int _counter = 0;
+  final ScrollController _controller = ScrollController();
   int? _selectedId;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
 
   PreferredSizeWidget _buildAppBar(BuildContext context) {
     return BWAppBar(
@@ -57,9 +51,12 @@ class _WalletPageState extends State<WalletPage> {
     return Scaffold(
       backgroundColor: _getBackgroundColor(context),
       appBar: _buildAppBar(context),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+      body: BWScrollBar(
+        controller: _controller,
+        horizontalPadding: 16,
+        child: ListView(
+          controller: _controller,
+          padding: EdgeInsets.zero,
           children: const <Widget>[
             Text(
               'You have pushed the button this many times:',
@@ -69,6 +66,7 @@ class _WalletPageState extends State<WalletPage> {
                 fontWeight: FontWeight.normal,
               ),
             ),
+            SizedBox(height: 220),
             Text(
               'You have pushed the button this many times:',
               style: TextStyle(
@@ -77,14 +75,16 @@ class _WalletPageState extends State<WalletPage> {
                 fontWeight: FontWeight.normal,
               ),
             ),
+            SizedBox(height: 220),
             Text(
-              '妳好',
+              '妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好',
               style: TextStyle(
                 fontFamily: 'MicrosoftJhengHei',
                 fontSize: 18,
                 fontWeight: FontWeight.normal,
               ),
             ),
+            SizedBox(height: 220),
             Text(
               '妳好',
               style: TextStyle(
@@ -95,11 +95,6 @@ class _WalletPageState extends State<WalletPage> {
             ),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
       ),
     );
   }
