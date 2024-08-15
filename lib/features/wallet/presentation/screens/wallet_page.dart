@@ -17,7 +17,6 @@ class WalletPage extends StatefulWidget {
 }
 
 class _WalletPageState extends State<WalletPage> {
-  final ScrollController _controller = ScrollController();
   int? _selectedId;
 
   PreferredSizeWidget _buildAppBar(BuildContext context) {
@@ -46,54 +45,102 @@ class _WalletPageState extends State<WalletPage> {
     );
   }
 
+  Widget _buildBody(BuildContext context) {
+    return const BWListView(
+      children: <Widget>[
+        Text(
+          'You have pushed the button this many times:',
+          style: TextStyle(
+            fontFamily: 'MicrosoftJhengHei',
+            fontSize: 18,
+            fontWeight: FontWeight.normal,
+          ),
+        ),
+        SizedBox(height: 220),
+        Text(
+          'You have pushed the button this many times:',
+          style: TextStyle(
+            fontSize: 18,
+            fontFamily: 'RobotoMono',
+            fontWeight: FontWeight.normal,
+          ),
+        ),
+        SizedBox(height: 220),
+        Text(
+          '妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好',
+          style: TextStyle(
+            fontFamily: 'MicrosoftJhengHei',
+            fontSize: 10,
+            fontWeight: FontWeight.normal,
+          ),
+        ),
+        SizedBox(height: 220),
+        Text(
+          '妳好',
+          style: TextStyle(
+            fontSize: 18,
+            fontFamily: 'RobotoMono',
+            fontWeight: FontWeight.normal,
+          ),
+        ),
+      ],
+    );
+  }
+
+  void _openDialog() {
+    const BWDetailDialog(
+      title: 'aaaaa',
+      subtitle: 'bbbb',
+      children: <Widget>[
+        Text(
+          'You have pushed the button this many times:',
+          style: TextStyle(
+            fontFamily: 'MicrosoftJhengHei',
+            fontSize: 18,
+            fontWeight: FontWeight.normal,
+          ),
+        ),
+        SizedBox(height: 220),
+        Text(
+          'You have pushed the button this many times:',
+          style: TextStyle(
+            fontSize: 18,
+            fontFamily: 'RobotoMono',
+            fontWeight: FontWeight.normal,
+          ),
+        ),
+        SizedBox(height: 220),
+        Text(
+          '妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好',
+          style: TextStyle(
+            fontFamily: 'MicrosoftJhengHei',
+            fontSize: 10,
+            fontWeight: FontWeight.normal,
+          ),
+        ),
+        SizedBox(height: 220),
+        Text(
+          '妳好',
+          style: TextStyle(
+            fontSize: 18,
+            fontFamily: 'RobotoMono',
+            fontWeight: FontWeight.normal,
+          ),
+        ),
+      ],
+    ).show(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: _getBackgroundColor(context),
       appBar: _buildAppBar(context),
-      body: BWScrollBar(
-        controller: _controller,
-        horizontalPadding: 16,
-        child: ListView(
-          controller: _controller,
-          padding: EdgeInsets.zero,
-          children: const <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-              style: TextStyle(
-                fontFamily: 'MicrosoftJhengHei',
-                fontSize: 18,
-                fontWeight: FontWeight.normal,
-              ),
-            ),
-            SizedBox(height: 220),
-            Text(
-              'You have pushed the button this many times:',
-              style: TextStyle(
-                fontSize: 18,
-                fontFamily: 'RobotoMono',
-                fontWeight: FontWeight.normal,
-              ),
-            ),
-            SizedBox(height: 220),
-            Text(
-              '妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好',
-              style: TextStyle(
-                fontFamily: 'MicrosoftJhengHei',
-                fontSize: 18,
-                fontWeight: FontWeight.normal,
-              ),
-            ),
-            SizedBox(height: 220),
-            Text(
-              '妳好',
-              style: TextStyle(
-                fontSize: 18,
-                fontFamily: 'RobotoMono',
-                fontWeight: FontWeight.normal,
-              ),
-            ),
-          ],
+      body: _buildBody(context),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _openDialog,
+        child: const Icon(
+          Icons.add,
         ),
       ),
     );
