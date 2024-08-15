@@ -3,7 +3,7 @@ import '../styles/theme_data.dart';
 
 const double _kThickness = 4;
 
-const double _kDistance = 8;
+const double _kScrollBarRightPadding = 2;
 
 Color _getScrollbarColor(BuildContext context) {
   BWThemeData themeData = Theme.of(context).extension<BWThemeData>()!;
@@ -33,13 +33,14 @@ class BWScrollBar extends StatelessWidget {
       radius: const Radius.circular(4),
       thumbColor: _getScrollbarColor(context),
       controller: controller,
-      thumbVisibility: true,
+      thumbVisibility: false,
       minThumbLength: 56,
-      padding: EdgeInsets.only(right: horizontalPadding),
+      // 滾輪距離右邊的距離
+      padding: const EdgeInsets.only(right: _kScrollBarRightPadding),
       child: Padding(
         padding: EdgeInsets.only(
           left: horizontalPadding,
-          right: horizontalPadding + _kDistance,
+          right: horizontalPadding,
         ),
         child: child,
       ),
