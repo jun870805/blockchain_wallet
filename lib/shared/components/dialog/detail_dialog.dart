@@ -6,35 +6,10 @@ const double _kCloseIconSize = 24;
 
 const EdgeInsets _kTitleRowPadding = EdgeInsets.symmetric(horizontal: 16);
 
-const BorderRadius _kBorderRadius = BorderRadius.all(
-  Radius.circular(16.0),
-);
-
-Border _getBorder(BuildContext context) {
-  BWThemeData themeData = Theme.of(context).extension<BWThemeData>()!;
-
-  return Border.all(
-    color: themeData.color.background02,
-    width: 1.0,
-  );
-}
-
-Color _getBackgroundColor(BuildContext context) {
-  BWThemeData themeData = Theme.of(context).extension<BWThemeData>()!;
-
-  return themeData.color.background;
-}
-
-Color _getCloseIconcolor(BuildContext context) {
+Color _getCloseIconColor(BuildContext context) {
   BWThemeData themeData = Theme.of(context).extension<BWThemeData>()!;
 
   return themeData.color.placeholder;
-}
-
-List<BoxShadow> _getBoxShadow(BuildContext context) {
-  BWThemeData themeData = Theme.of(context).extension<BWThemeData>()!;
-
-  return themeData.shadow.medium;
 }
 
 TextStyle _getTitleTextStyle(BuildContext context) {
@@ -55,8 +30,6 @@ TextStyle _getSubtitleTextStyle(BuildContext context) {
 
 class BWDetailDialog extends StatelessWidget {
   /// ## Detail Dialog
-  /// * 顯示詳細內容視窗
-  /// * 需將組好的詳細內容傳進來
   ///
   /// ### Parameters:
   /// * **body**(Widget,***required***): 詳細內容
@@ -64,12 +37,10 @@ class BWDetailDialog extends StatelessWidget {
   /// * **subTitleText**(String,_optional_): 副標題文字
   ///
   /// ### Example:
-  /// Future<T> show<T>(BuildContext context) async {
-  ///  return await BWDetailDialog(
-  ///    titleText: 'titleText',
-  ///    body: this,
-  ///  ).show(context);
-  /// }
+  /// BWDetailDialog(
+  ///   titleText: 'titleText',
+  ///   body: this,
+  /// ).show(context);
   ///
   const BWDetailDialog({
     super.key,
@@ -99,7 +70,7 @@ class BWDetailDialog extends StatelessWidget {
       child: Icon(
         Icons.close,
         size: _kCloseIconSize,
-        color: _getCloseIconcolor(context),
+        color: _getCloseIconColor(context),
       ),
       onTap: () => Navigator.of(context).pop(),
     );
@@ -146,7 +117,8 @@ class BWDetailDialog extends StatelessWidget {
     );
   }
 
-  Widget _buildBody(BuildContext context) {
+  @override
+  Widget build(BuildContext context) {
     List<Widget> children = [];
 
     children.add(const SizedBox(height: 16));
@@ -159,35 +131,10 @@ class BWDetailDialog extends StatelessWidget {
     children.add(_buildContent(context));
     children.add(const SizedBox(height: 16));
 
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: children,
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    MediaQueryData mediaQuery = MediaQuery.of(context);
-
-    double width = mediaQuery.size.width - 16 * 2;
-    double maxHeight = mediaQuery.size.height -
-        56 * 2 -
-        mediaQuery.viewInsets.top -
-        mediaQuery.viewInsets.bottom;
-
     return BWDialog(
-      child: Container(
-        constraints: BoxConstraints(
-          maxHeight: maxHeight,
-        ),
-        width: width,
-        decoration: BoxDecoration(
-          color: _getBackgroundColor(context),
-          boxShadow: _getBoxShadow(context),
-          border: _getBorder(context),
-          borderRadius: _kBorderRadius,
-        ),
-        child: _buildBody(context),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: children,
       ),
     );
   }

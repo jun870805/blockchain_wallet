@@ -5,9 +5,12 @@ import '../../styles/styles.dart';
 
 export './detail_dialog.dart';
 
-const BorderRadius _kBorderRadius = BorderRadius.all(Radius.circular(16.0));
+const EdgeInsets _kDialogPadding = EdgeInsets.symmetric(
+  horizontal: 24,
+  vertical: 56,
+);
 
-const BoxConstraints _kConstraints = BoxConstraints(minWidth: 280.0);
+const BorderRadius _kBorderRadius = BorderRadius.all(Radius.circular(24.0));
 
 Border _getBorder(BuildContext context) {
   BWThemeData themeData = Theme.of(context).extension<BWThemeData>()!;
@@ -27,7 +30,7 @@ Color _getBackgroundColor(BuildContext context) {
 List<BoxShadow> _getBoxShadow(BuildContext context) {
   BWThemeData themeData = Theme.of(context).extension<BWThemeData>()!;
 
-  return themeData.shadow.medium;
+  return themeData.shadow.light;
 }
 
 class BWDialog extends StatelessWidget {
@@ -49,26 +52,17 @@ class BWDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       color: Colors.transparent,
-      child: Padding(
-        padding: EdgeInsets.only(
-          left: 32,
-          top: 56,
-          right: 32,
-          bottom: 56 + MediaQuery.of(context).viewInsets.bottom,
-        ),
-        child: Center(
-          child: ConstrainedBox(
-            constraints: _kConstraints,
-            child: Container(
-              decoration: BoxDecoration(
-                boxShadow: _getBoxShadow(context),
-                borderRadius: _kBorderRadius,
-                border: _getBorder(context),
-                color: _getBackgroundColor(context),
-              ),
-              child: child,
-            ),
+      child: Container(
+        alignment: Alignment.center,
+        padding: _kDialogPadding,
+        child: Container(
+          decoration: BoxDecoration(
+            boxShadow: _getBoxShadow(context),
+            borderRadius: _kBorderRadius,
+            border: _getBorder(context),
+            color: _getBackgroundColor(context),
           ),
+          child: child,
         ),
       ),
     );
@@ -95,43 +89,44 @@ const Duration _kDuration = Duration(milliseconds: 10);
 Color _getBarrierColor(BuildContext context) {
   BWThemeData themeData = Theme.of(context).extension<BWThemeData>()!;
 
-  return themeData.color.transparent1002.withOpacity(0.5);
+  return themeData.color.transparent1001;
 }
 
 Future<T?> showBWDialog<T extends Object?>({
   required BuildContext context,
   required WidgetBuilder builder,
-  bool barrierDismissible = false,
-  bool useRootNavigator = true,
   RouteSettings? routeSettings,
-  bool isBlur = true,
+
+  /// 點擊外部區域是否關閉視窗
+  bool barrierDismissible = false,
 }) {
   return showGeneralDialog(
     context: context,
+    barrierLabel: '',
+    barrierColor: _getBarrierColor(context),
+    barrierDismissible: barrierDismissible,
+    transitionDuration: _kDuration,
+    transitionBuilder: _buildDialogTransitions,
+    useRootNavigator: false,
+    routeSettings: routeSettings,
     pageBuilder: (
       BuildContext buildContext,
       Animation<double> animation,
       Animation<double> secondaryAnimation,
     ) {
       final Widget pageChild = Builder(builder: builder);
+
       return BackdropFilter(
         filter: ImageFilter.blur(
-          sigmaX: 5,
-          sigmaY: 5,
+          sigmaX: 3,
+          sigmaY: 3,
         ),
-        child: SafeArea(
-          child: Builder(builder: (BuildContext context) {
-            return pageChild;
-          }),
+        child: Builder(
+          builder: (BuildContext context) {
+            return SafeArea(child: pageChild);
+          },
         ),
       );
     },
-    barrierDismissible: barrierDismissible,
-    barrierLabel: '',
-    barrierColor: _getBarrierColor(context),
-    transitionDuration: _kDuration,
-    transitionBuilder: _buildDialogTransitions,
-    useRootNavigator: useRootNavigator,
-    routeSettings: routeSettings,
   );
 }

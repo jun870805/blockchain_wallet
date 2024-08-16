@@ -88,9 +88,9 @@ class _WalletPageState extends State<WalletPage> {
   }
 
   void _openDialog() {
-    const BWDetailDialog(
-      title: 'aaaaa',
-      subtitle: 'bbbb',
+    const BWBottomSheet(
+      // title: 'aaaaa',
+      // subtitle: 'bbbb',
       children: <Widget>[
         Text(
           'You have pushed the button this many times:',
