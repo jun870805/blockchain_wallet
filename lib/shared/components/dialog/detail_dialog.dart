@@ -4,6 +4,8 @@ import '../components.dart';
 
 const double _kCloseIconSize = 24;
 
+const EdgeInsets _kBodyPadding = EdgeInsets.symmetric(vertical: 16);
+
 const EdgeInsets _kTitleRowPadding = EdgeInsets.symmetric(horizontal: 16);
 
 Color _getCloseIconColor(BuildContext context) {
@@ -32,31 +34,31 @@ class BWDetailDialog extends StatelessWidget {
   /// ## Detail Dialog
   ///
   /// ### Parameters:
-  /// * **body**(Widget,***required***): 詳細內容
-  /// * **titleText**(String,_optional_): 標題文字
-  /// * **subTitleText**(String,_optional_): 副標題文字
+  /// * **title**(String,_optional_): 標題文字
+  /// * **subtitle**(String,_optional_): 副標題文字
+  /// * **children**(Widget,***required***): 詳細內容
   ///
   /// ### Example:
   /// BWDetailDialog(
-  ///   titleText: 'titleText',
+  ///   title: 'titleText',
   ///   body: this,
   /// ).show(context);
   ///
   const BWDetailDialog({
     super.key,
-    required this.children,
     this.title,
     this.subtitle,
+    required this.children,
   });
-
-  /// 內容
-  final List<Widget> children;
 
   /// 標題文字
   final String? title;
 
   /// 副標題文字
   final String? subtitle;
+
+  /// 內容
+  final List<Widget> children;
 
   Widget _buildTitle(BuildContext context) {
     return Text(
@@ -121,7 +123,6 @@ class BWDetailDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Widget> children = [];
 
-    children.add(const SizedBox(height: 16));
     children.add(_buildTitleRow(context));
     if (subtitle != null) {
       children.add(const SizedBox(height: 4));
@@ -129,12 +130,14 @@ class BWDetailDialog extends StatelessWidget {
     }
     children.add(const SizedBox(height: 16));
     children.add(_buildContent(context));
-    children.add(const SizedBox(height: 16));
 
     return BWDialog(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: children,
+      child: Padding(
+        padding: _kBodyPadding,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: children,
+        ),
       ),
     );
   }
