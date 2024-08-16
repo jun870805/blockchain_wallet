@@ -19,24 +19,8 @@ class BWDivider extends StatelessWidget {
   ///
   /// ### Example:
   /// ```dart
-  /// EXDivider();
+  /// BWDivider(type: DividerType.horizontal);
   /// ```
-  ///
-  /// 因外層的容器可能有ListView這種擁有無限長度的容器
-  /// 可能會發生無法自動填滿導致發生錯誤，解決方式如下
-  /// 例如當 DividerType.Vertical 時，
-  /// 將父容器使用IntrinsicHeight強制 EXDivider 適應父容器的高度
-  /// ### Example:
-  /// ```dart
-  /// IntrinsicHeight(
-  ///   child: Row(
-  ///     children: [
-  ///      EXDivider(
-  ///        type: DividerType.Vertical,
-  ///      ),
-  ///     ],
-  ///   ),
-  /// )
   const BWDivider({
     super.key,
     required this.type,

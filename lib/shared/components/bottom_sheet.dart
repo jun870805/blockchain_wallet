@@ -42,7 +42,7 @@ Color _getBackgroundColor(BuildContext context) {
 Color _getDividerColor(BuildContext context) {
   BWThemeData themeData = Theme.of(context).extension<BWThemeData>()!;
 
-  return themeData.color.neutral13;
+  return themeData.color.transparent1002;
 }
 
 List<BoxShadow> _getBoxShadow(BuildContext context) {

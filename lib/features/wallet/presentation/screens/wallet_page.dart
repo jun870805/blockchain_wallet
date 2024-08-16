@@ -100,6 +100,7 @@ class _WalletPageState extends State<WalletPage> {
             fontWeight: FontWeight.normal,
           ),
         ),
+        BWDivider(type: DividerType.horizontal),
         SizedBox(height: 220),
         Text(
           'You have pushed the button this many times:',
