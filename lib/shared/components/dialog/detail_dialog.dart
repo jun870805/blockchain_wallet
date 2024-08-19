@@ -68,13 +68,11 @@ class BWDetailDialog extends StatelessWidget {
   }
 
   Widget _buildCloseIcon(BuildContext context) {
-    return GestureDetector(
-      child: Icon(
-        Icons.close,
-        size: _kCloseIconSize,
-        color: _getCloseIconColor(context),
-      ),
-      onTap: () => Navigator.of(context).pop(),
+    return BWIconButton(
+      icon: Icons.close,
+      size: _kCloseIconSize,
+      color: _getCloseIconColor(context),
+      onPressed: Navigator.of(context).pop,
     );
   }
 
