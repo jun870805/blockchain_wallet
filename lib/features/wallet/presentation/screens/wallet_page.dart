@@ -57,7 +57,7 @@ class _WalletPageState extends State<WalletPage> {
         BWSecondaryButton(
           size: ButtonSize.M,
           text: '確認',
-          onPressed: _openDialog,
+          onPressed: () => const BWToast(text: '妳好').show(context),
         ),
         const Text(
           'You have pushed the button this many times:',

@@ -6,3 +6,4 @@ export './dialog/dialog.dart';
 export './divider.dart';
 export './list_view.dart';
 export './scroll_bar.dart';
+export './toast.dart';
