@@ -25,7 +25,7 @@ TextStyle _getTitleTextStyle(BuildContext context) {
 TextStyle _getSubtitleTextStyle(BuildContext context) {
   BWThemeData themeData = Theme.of(context).extension<BWThemeData>()!;
 
-  return themeData.typography.bodyMedium.apply(
+  return themeData.typography.bodyMediumRegular.apply(
     color: themeData.color.note,
   );
 }

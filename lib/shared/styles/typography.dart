@@ -106,30 +106,58 @@ class BWTypography {
       height: 1.5,
       letterSpacing: 0.1,
     ),
-    this.bodyLarge = const TextStyle(
+    this.bodyLargeRegular = const TextStyle(
       fontFamily: 'MicrosoftJhengHei',
       fontWeight: FontWeight.normal,
       fontSize: 16.0 - _errorFontSize,
       height: 1.5,
       letterSpacing: 0.5,
     ),
-    this.bodyMedium = const TextStyle(
+    this.bodyLargeBold = const TextStyle(
+      fontFamily: 'MicrosoftJhengHei',
+      fontWeight: FontWeight.bold,
+      fontSize: 16.0 - _errorFontSize,
+      height: 1.5,
+      letterSpacing: 0.5,
+    ),
+    this.bodyMediumRegular = const TextStyle(
       fontFamily: 'MicrosoftJhengHei',
       fontWeight: FontWeight.normal,
       fontSize: 14.0 - _errorFontSize,
       height: 1.5,
       letterSpacing: 0.25,
     ),
-    this.bodySmall = const TextStyle(
+    this.bodyMediumBold = const TextStyle(
+      fontFamily: 'MicrosoftJhengHei',
+      fontWeight: FontWeight.bold,
+      fontSize: 14.0 - _errorFontSize,
+      height: 1.5,
+      letterSpacing: 0.25,
+    ),
+    this.bodySmallRegular = const TextStyle(
       fontFamily: 'MicrosoftJhengHei',
       fontWeight: FontWeight.normal,
       fontSize: 12.0 - _errorFontSize,
       height: 1.5,
+      letterSpacing: 0.25,
+    ),
+    this.bodySmallBold = const TextStyle(
+      fontFamily: 'MicrosoftJhengHei',
+      fontWeight: FontWeight.bold,
+      fontSize: 12.0 - _errorFontSize,
+      height: 1.5,
       letterSpacing: 0.1,
     ),
-    this.buttonLarge = const TextStyle(
+    this.buttonLargeRegular = const TextStyle(
       fontFamily: 'MicrosoftJhengHei',
       fontWeight: FontWeight.normal,
+      fontSize: 16.0 - _errorFontSize,
+      height: 1.5,
+      letterSpacing: 0.5,
+    ),
+    this.buttonLargeBold = const TextStyle(
+      fontFamily: 'MicrosoftJhengHei',
+      fontWeight: FontWeight.bold,
       fontSize: 16.0 - _errorFontSize,
       height: 1.5,
       letterSpacing: 0.5,
@@ -148,23 +176,44 @@ class BWTypography {
       height: 1.5,
       letterSpacing: 0.5,
     ),
-    this.buttonSmall = const TextStyle(
+    this.buttonSmallRegular = const TextStyle(
       fontFamily: 'MicrosoftJhengHei',
       fontWeight: FontWeight.normal,
       fontSize: 12.0 - _errorFontSize,
       height: 1.5,
       letterSpacing: 0.5,
     ),
-    this.labelLarge = const TextStyle(
+    this.buttonSmallBold = const TextStyle(
+      fontFamily: 'MicrosoftJhengHei',
+      fontWeight: FontWeight.bold,
+      fontSize: 12.0 - _errorFontSize,
+      height: 1.5,
+      letterSpacing: 0.5,
+    ),
+    this.labelLargeRegular = const TextStyle(
       fontFamily: 'MicrosoftJhengHei',
       fontWeight: FontWeight.normal,
       fontSize: 14.0 - _errorFontSize,
       height: 1.5,
       letterSpacing: 0.1,
     ),
-    this.labelMedium = const TextStyle(
+    this.labelLargeBold = const TextStyle(
+      fontFamily: 'MicrosoftJhengHei',
+      fontWeight: FontWeight.bold,
+      fontSize: 14.0 - _errorFontSize,
+      height: 1.5,
+      letterSpacing: 0.1,
+    ),
+    this.labelMediumRegular = const TextStyle(
       fontFamily: 'MicrosoftJhengHei',
       fontWeight: FontWeight.normal,
+      fontSize: 12.0 - _errorFontSize,
+      height: 1.5,
+      letterSpacing: 0.5,
+    ),
+    this.labelMediumBold = const TextStyle(
+      fontFamily: 'MicrosoftJhengHei',
+      fontWeight: FontWeight.bold,
       fontSize: 12.0 - _errorFontSize,
       height: 1.5,
       letterSpacing: 0.5,
@@ -172,52 +221,40 @@ class BWTypography {
   });
 
   final TextStyle displayLarge;
-
   final TextStyle displayMedium;
-
   final TextStyle displaySmall;
 
   final TextStyle headlineLarge;
-
   final TextStyle headlineMediumBold;
-
   final TextStyle headlineMediumRegular;
-
   final TextStyle headlineSmallBold;
-
   final TextStyle headlineSmallRegular;
 
   final TextStyle titleLargeBold;
-
   final TextStyle titleLargeRegular;
-
   final TextStyle titleMediumBold;
-
   final TextStyle titleMediumRegular;
-
   final TextStyle titleSmallBold;
-
   final TextStyle titleSmallRegular;
-
   final TextStyle titleExtraSmallBold;
-
   final TextStyle titleExtraSmallRegular;
 
-  final TextStyle bodyLarge;
+  final TextStyle bodyLargeRegular;
+  final TextStyle bodyLargeBold;
+  final TextStyle bodyMediumRegular;
+  final TextStyle bodyMediumBold;
+  final TextStyle bodySmallRegular;
+  final TextStyle bodySmallBold;
 
-  final TextStyle bodyMedium;
-
-  final TextStyle bodySmall;
-
-  final TextStyle buttonLarge;
-
+  final TextStyle buttonLargeRegular;
+  final TextStyle buttonLargeBold;
   final TextStyle buttonMediumRegular;
-
   final TextStyle buttonMediumBold;
+  final TextStyle buttonSmallRegular;
+  final TextStyle buttonSmallBold;
 
-  final TextStyle buttonSmall;
-
-  final TextStyle labelLarge;
-
-  final TextStyle labelMedium;
+  final TextStyle labelLargeRegular;
+  final TextStyle labelLargeBold;
+  final TextStyle labelMediumRegular;
+  final TextStyle labelMediumBold;
 }

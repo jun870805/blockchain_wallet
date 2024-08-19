@@ -22,7 +22,7 @@ TextStyle _getTitleTextStyle(BuildContext context) {
 TextStyle _getContentTextStyle(BuildContext context) {
   BWThemeData themeData = Theme.of(context).extension<BWThemeData>()!;
 
-  return themeData.typography.bodySmall.apply(
+  return themeData.typography.bodySmallRegular.apply(
     color: themeData.color.note,
   );
 }

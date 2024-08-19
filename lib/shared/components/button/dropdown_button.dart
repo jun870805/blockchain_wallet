@@ -49,7 +49,7 @@ Color _getDropdownMenuBackgroundColor(BuildContext context) {
 TextStyle _getHintTextStyle(BuildContext context) {
   BWThemeData themeData = Theme.of(context).extension<BWThemeData>()!;
 
-  return themeData.typography.bodyMedium.apply(
+  return themeData.typography.bodyMediumRegular.apply(
     color: themeData.color.placeholder,
   );
 }
@@ -57,7 +57,7 @@ TextStyle _getHintTextStyle(BuildContext context) {
 TextStyle _getSelectedItemTextStyle(BuildContext context, bool isDisable) {
   BWThemeData themeData = Theme.of(context).extension<BWThemeData>()!;
 
-  return themeData.typography.bodyMedium.apply(
+  return themeData.typography.bodyMediumRegular.apply(
     color: isDisable ? themeData.color.placeholder : themeData.color.title,
   );
 }
@@ -65,7 +65,7 @@ TextStyle _getSelectedItemTextStyle(BuildContext context, bool isDisable) {
 TextStyle _getDropdownMenuItemTextStyle(BuildContext context, bool isSelected) {
   BWThemeData themeData = Theme.of(context).extension<BWThemeData>()!;
 
-  return themeData.typography.bodyMedium.apply(
+  return themeData.typography.bodyMediumRegular.apply(
     color: isSelected ? themeData.color.primary : themeData.color.title,
   );
 }

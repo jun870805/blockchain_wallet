@@ -46,9 +46,14 @@ class _WalletPageState extends State<WalletPage> {
   }
 
   Widget _buildBody(BuildContext context) {
-    return const BWListView(
+    return BWListView(
       children: <Widget>[
-        Text(
+        BWPrimaryButton(
+          size: ButtonSize.M,
+          text: '確認',
+          onPressed: _openDialog,
+        ),
+        const Text(
           'You have pushed the button this many times:',
           style: TextStyle(
             fontFamily: 'MicrosoftJhengHei',
@@ -56,8 +61,8 @@ class _WalletPageState extends State<WalletPage> {
             fontWeight: FontWeight.normal,
           ),
         ),
-        SizedBox(height: 220),
-        Text(
+        const SizedBox(height: 220),
+        const Text(
           'You have pushed the button this many times:',
           style: TextStyle(
             fontSize: 18,
@@ -65,8 +70,8 @@ class _WalletPageState extends State<WalletPage> {
             fontWeight: FontWeight.normal,
           ),
         ),
-        SizedBox(height: 220),
-        Text(
+        const SizedBox(height: 220),
+        const Text(
           '妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好',
           style: TextStyle(
             fontFamily: 'MicrosoftJhengHei',
@@ -74,8 +79,8 @@ class _WalletPageState extends State<WalletPage> {
             fontWeight: FontWeight.normal,
           ),
         ),
-        SizedBox(height: 220),
-        Text(
+        const SizedBox(height: 220),
+        const Text(
           '妳好',
           style: TextStyle(
             fontSize: 18,
