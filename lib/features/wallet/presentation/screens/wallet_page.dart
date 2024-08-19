@@ -59,13 +59,8 @@ class _WalletPageState extends State<WalletPage> {
           text: '確認',
           onPressed: () => const BWToast(text: '妳好').show(context),
         ),
-        const Text(
-          'You have pushed the button this many times:',
-          style: TextStyle(
-            fontFamily: 'MicrosoftJhengHei',
-            fontSize: 18,
-            fontWeight: FontWeight.normal,
-          ),
+        const BWTextButton(
+          text: 'You have pushed the button this many times:',
         ),
         const SizedBox(height: 220),
         const Text(
