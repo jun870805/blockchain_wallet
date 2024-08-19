@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:blockchain_wallet/shared/styles/styles.dart';
 
+import '../../../../core/models/models.dart';
 import '../../../../shared/components/components.dart';
 
 Color _getBackgroundColor(BuildContext context) {
