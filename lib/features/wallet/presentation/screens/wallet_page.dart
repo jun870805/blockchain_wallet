@@ -53,6 +53,12 @@ class _WalletPageState extends State<WalletPage> {
           text: '確認',
           onPressed: _openDialog,
         ),
+        const SizedBox(height: 12),
+        BWSecondaryButton(
+          size: ButtonSize.M,
+          text: '確認',
+          onPressed: _openDialog,
+        ),
         const Text(
           'You have pushed the button this many times:',
           style: TextStyle(
