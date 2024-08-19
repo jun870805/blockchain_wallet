@@ -88,7 +88,7 @@ class _WalletPageState extends State<WalletPage> {
   }
 
   void _openDialog() {
-    const BWBottomSheet(
+    const BWDetailDialog(
       // title: 'aaaaa',
       // subtitle: 'bbbb',
       children: <Widget>[
@@ -132,6 +132,14 @@ class _WalletPageState extends State<WalletPage> {
     ).show(context);
   }
 
+  void _openConfirmDialog() {
+    BWConfirmDialog(
+      title: '妳好',
+      content: '請問是否要離開',
+      onPressedCancel: Navigator.of(context).pop,
+    ).show(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -139,7 +147,7 @@ class _WalletPageState extends State<WalletPage> {
       appBar: _buildAppBar(context),
       body: _buildBody(context),
       floatingActionButton: FloatingActionButton(
-        onPressed: _openDialog,
+        onPressed: _openConfirmDialog,
         child: const Icon(
           Icons.add,
         ),

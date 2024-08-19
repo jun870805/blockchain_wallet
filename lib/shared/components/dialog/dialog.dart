@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import '../../styles/styles.dart';
 
+export './confirm_dialog.dart';
 export './detail_dialog.dart';
 
 const EdgeInsets _kDialogPadding = EdgeInsets.symmetric(
@@ -10,7 +11,7 @@ const EdgeInsets _kDialogPadding = EdgeInsets.symmetric(
   vertical: 56,
 );
 
-const BorderRadius _kBorderRadius = BorderRadius.all(Radius.circular(24.0));
+const BorderRadius _kBorderRadius = BorderRadius.all(Radius.circular(16.0));
 
 Border _getBorder(BuildContext context) {
   BWThemeData themeData = Theme.of(context).extension<BWThemeData>()!;
@@ -30,7 +31,7 @@ Color _getBackgroundColor(BuildContext context) {
 List<BoxShadow> _getBoxShadow(BuildContext context) {
   BWThemeData themeData = Theme.of(context).extension<BWThemeData>()!;
 
-  return themeData.shadow.light;
+  return themeData.shadow.extraLight;
 }
 
 class BWDialog extends StatelessWidget {

@@ -113,7 +113,6 @@ class BWBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     MediaQueryData mediaQuery = MediaQuery.of(context);
-
     double maxHeight = mediaQuery.size.height / 2.5;
 
     return Container(

@@ -134,9 +134,16 @@ class BWTypography {
       height: 1.5,
       letterSpacing: 0.5,
     ),
-    this.buttonMedium = const TextStyle(
+    this.buttonMediumRegular = const TextStyle(
       fontFamily: 'MicrosoftJhengHei',
       fontWeight: FontWeight.normal,
+      fontSize: 14.0 - _errorFontSize,
+      height: 1.5,
+      letterSpacing: 0.5,
+    ),
+    this.buttonMediumBold = const TextStyle(
+      fontFamily: 'MicrosoftJhengHei',
+      fontWeight: FontWeight.bold,
       fontSize: 14.0 - _errorFontSize,
       height: 1.5,
       letterSpacing: 0.5,
@@ -204,7 +211,9 @@ class BWTypography {
 
   final TextStyle buttonLarge;
 
-  final TextStyle buttonMedium;
+  final TextStyle buttonMediumRegular;
+
+  final TextStyle buttonMediumBold;
 
   final TextStyle buttonSmall;
 
