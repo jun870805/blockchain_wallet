@@ -30,7 +30,19 @@ TextStyle _getTitleTextStyle(BuildContext context) {
 }
 
 class BWAppBar extends StatelessWidget implements PreferredSizeWidget {
-  /// Custom App Bar
+  /// ## App Bar
+  ///
+  /// ### Parameters:
+  /// * **title**(List<MenuItem>,_optional_): 標題
+  /// * **titleWidget**(int,_optional_): 自定義Widget
+  /// * **suffixAction**(Function(int),_optional_): App Bar 右側按鈕
+  ///
+  /// ### Example:
+  /// ```dart
+  /// BWAppBar(
+  ///   title: 'APP Bar',
+  /// );
+  /// ```
   const BWAppBar({
     super.key,
     this.title,

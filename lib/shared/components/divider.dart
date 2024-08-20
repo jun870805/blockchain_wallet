@@ -11,6 +11,7 @@ Color _getLineColor(BuildContext context) {
 
 class BWDivider extends StatelessWidget {
   /// ## Divider 分隔線
+  ///
   /// ### Parameters:
   /// * **type**(DividerType,***required***): 類形(橫式/直式)
   /// * **color**(Color,_optional_): 顏色

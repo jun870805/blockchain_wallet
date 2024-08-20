@@ -12,6 +12,20 @@ Color _getScrollbarColor(BuildContext context) {
 }
 
 class BWScrollBar extends StatelessWidget {
+  /// ## Scroll Bar
+  ///
+  /// ### Parameters:
+  /// * **child**(Widget,***required***): 內容
+  /// * **controller**(ScrollController,***required***): 滾輪控制
+  /// * **horizontalPadding**(double,_optional_): 橫向Padding
+  ///
+  /// ### Example:
+  /// ```dart
+  /// BWScrollBar(
+  ///   child: SizedBox(height: 100),
+  ///   controller: ScrollController(),
+  /// );
+  /// ```
   const BWScrollBar({
     super.key,
     required this.child,
@@ -19,8 +33,10 @@ class BWScrollBar extends StatelessWidget {
     this.horizontalPadding = 0,
   }) : assert(horizontalPadding >= 0);
 
+  /// 內容
   final Widget child;
 
+  /// 滾輪控制
   final ScrollController controller;
 
   /// 橫向Padding

@@ -33,6 +33,23 @@ List<BoxShadow> _getNavigationBarBoxShadow(BuildContext context) {
 }
 
 class BWNavigationBar extends StatefulWidget {
+  /// ## Navigation Bar
+  ///
+  /// ### Parameters:
+  /// * **items**(List<NavigationBarItem>,***required***): 選項
+  /// * **selectedIndex**(int,***required***): 選中的選項id
+  /// * **onChanged**(Function(int),***required***): 回傳選中的選項index
+  ///
+  /// ### Example:
+  /// ```dart
+  /// BWNavigationBar(
+  ///   items: [],
+  ///   selectedIndex: 0,
+  ///   onChanged: (int index){
+  ///     print(index);
+  ///   }
+  /// );
+  /// ```
   const BWNavigationBar({
     super.key,
     required this.items,

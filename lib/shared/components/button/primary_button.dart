@@ -110,6 +110,7 @@ TextStyle _getTextStyle(
 
 class BWPrimaryButton extends StatefulWidget {
   /// ## Primary Button 主按鈕
+  ///
   /// ### Parameters:
   /// * **size**(ButtonSize,_optional_): 按鈕大小(可選S、M、L)
   /// * **onPressed**(VoidCallback,_optional_): 點擊事件

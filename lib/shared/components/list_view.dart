@@ -2,14 +2,33 @@ import 'package:blockchain_wallet/shared/components/components.dart';
 import 'package:flutter/material.dart';
 
 class BWListView extends StatefulWidget {
+  /// ## Scroll Bar
+  ///
+  /// ### Parameters:
+  /// * **children**(List<Widget>,***required***): 內容
+  /// * **horizontalPadding**(double,_optional_): 橫向Padding
+  ///
+  /// ### Example:
+  /// ```dart
+  /// BWListView(
+  ///   children: [
+  ///     SizedBox(height: 100),
+  ///     SizedBox(height: 100),
+  ///     SizedBox(height: 100),
+  ///   ],
+  /// );
+  /// ```
+  ///
   const BWListView({
     super.key,
     required this.children,
     this.horizontalPadding = 16,
   }) : assert(horizontalPadding >= 0);
 
+  /// 內容
   final List<Widget> children;
 
+  /// 橫向Padding
   final double horizontalPadding;
 
   @override

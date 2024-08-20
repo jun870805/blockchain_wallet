@@ -73,6 +73,7 @@ TextStyle _getDropdownMenuItemTextStyle(BuildContext context, bool isSelected) {
 
 class BWDropdownButton extends StatelessWidget {
   /// ## Dropdown Button 下拉式選單按鈕
+  ///
   /// ### Parameters:
   /// * **items**(List<MenuItem>,_optional_): 選項
   /// * **selectedId**(int,_optional_): 選中的選項id

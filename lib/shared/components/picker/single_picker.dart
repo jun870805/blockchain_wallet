@@ -30,6 +30,7 @@ TextStyle _getItemTextStyle(BuildContext context) {
 
 class BWSinglePicker extends StatefulWidget {
   /// ## Single Picker BottomSheet的選擇項目
+  ///
   /// ### Parameters:
   /// * **items**(List<MenuItem>,_optional_): 選項
   /// * **selectedId**(int,_optional_): 選中的選項id
