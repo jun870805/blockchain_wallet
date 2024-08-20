@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../styles/theme_data.dart';
+import '../../styles/theme_data.dart';
 
 const double kAppBarHeight = 56.0;
 
