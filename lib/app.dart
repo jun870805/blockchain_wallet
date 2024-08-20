@@ -57,7 +57,7 @@ class MyApp extends ConsumerWidget {
       ],
       supportedLocales: S.delegate.supportedLocales,
       locale: locale,
-      home: const NavigationPage(),
+      home: NavigationPage(),
     );
   }
 }

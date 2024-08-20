@@ -1,1 +1,1 @@
-export './menu_item.dart';
+export './components/component.dart';

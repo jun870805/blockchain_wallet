@@ -1,5 +1,6 @@
 import 'package:blockchain_wallet/shared/styles/styles.dart';
 import 'package:flutter/material.dart';
+import '../../../core/models/models.dart';
 
 EdgeInsetsGeometry _kNavigationBarMargin = const EdgeInsets.symmetric(
   vertical: 8.0,
@@ -33,45 +34,33 @@ List<BoxShadow> _getNavigationBarBoxShadow(BuildContext context) {
 }
 
 class BWNavigationBar extends StatefulWidget {
-  /// ## Navigation Bar
+  /// ## Navigation Bar (包含上方body view)
   ///
   /// ### Parameters:
-  /// * **items**(List<NavigationBarItem>,***required***): 選項
-  /// * **selectedIndex**(int,***required***): 選中的選項id
-  /// * **onChanged**(Function(int),***required***): 回傳選中的選項index
+  /// * **items**(List<NavigationBarItem>,***required***): 項目
   ///
   /// ### Example:
   /// ```dart
   /// BWNavigationBar(
   ///   items: [],
-  ///   selectedIndex: 0,
-  ///   onChanged: (int index){
-  ///     print(index);
-  ///   }
   /// );
   /// ```
   const BWNavigationBar({
     super.key,
     required this.items,
-    required this.selectedIndex,
-    required this.onChanged,
   });
 
-  /// 選項
-  final List<NavigationBarItem> items;
-
-  /// 選中的選項id
-  final int selectedIndex;
-
-  /// 回傳選中的選項index
-  final Function(int) onChanged;
+  /// 項目
+  final List<BarItem> items;
 
   @override
   State<BWNavigationBar> createState() => _BWNavigationBarState();
 }
 
 class _BWNavigationBarState extends State<BWNavigationBar> {
-  Widget _buildBody(BuildContext context) {
+  int _selectedIndex = 0;
+
+  Widget _buildBottomNavigationBar(BuildContext context) {
     return BottomNavigationBar(
       type: BottomNavigationBarType.fixed,
       backgroundColor: _getBackgroundColor(context),
@@ -83,15 +72,14 @@ class _BWNavigationBarState extends State<BWNavigationBar> {
                 label: e.title,
               ))
           .toList(),
-      currentIndex: widget.selectedIndex,
+      currentIndex: _selectedIndex,
       selectedItemColor: _getFocusColor(context),
       unselectedItemColor: _getUnfocusColor(context),
-      onTap: widget.onChanged,
+      onTap: (int index) => setState(() => _selectedIndex = index),
     );
   }
 
-  @override
-  Widget build(BuildContext context) {
+  Widget _buildBottomBody(BuildContext context) {
     return Container(
       margin: _kNavigationBarMargin,
       decoration: BoxDecoration(
@@ -101,29 +89,16 @@ class _BWNavigationBarState extends State<BWNavigationBar> {
       ),
       child: ClipRRect(
         borderRadius: _kNavigationBarBorderRadius,
-        child: _buildBody(context),
+        child: _buildBottomNavigationBar(context),
       ),
     );
   }
-}
 
-class NavigationBarItem {
-  NavigationBarItem({
-    required this.icon,
-    this.activeIcon,
-    this.title,
-    required this.body,
-  });
-
-  /// icon(必填)
-  final IconData icon;
-
-  /// 圖片
-  final IconData? activeIcon;
-
-  /// 標題
-  final String? title;
-
-  /// body(必填)
-  final Widget body;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: widget.items.elementAt(_selectedIndex).body,
+      bottomNavigationBar: _buildBottomBody(context),
+    );
+  }
 }

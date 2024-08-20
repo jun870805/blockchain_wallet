@@ -18,7 +18,6 @@ class WalletPage extends StatefulWidget {
 }
 
 class _WalletPageState extends State<WalletPage> {
-  int? _selectedId;
   final List<MenuItem> _menuItem = [
     MenuItem(
       id: 0,
@@ -31,15 +30,17 @@ class _WalletPageState extends State<WalletPage> {
     MenuItem(id: 3, title: 'Peach'),
   ];
 
+  int? _selectedItemId;
+
   PreferredSizeWidget _buildAppBar(BuildContext context) {
     return BWAppBar(
       // title: 'ssss',
       titleWidget: BWDropdownButton(
         width: 120,
         items: _menuItem,
-        selectedId: _selectedId,
+        selectedId: _selectedItemId,
         onChanged: (int? id) {
-          _selectedId = id;
+          _selectedItemId = id;
           setState(() {});
         },
         hintText: 'Choose your favorite Fruit',
@@ -67,9 +68,9 @@ class _WalletPageState extends State<WalletPage> {
           text: '選擇',
           onPressed: () => BWSinglePicker(
             items: _menuItem,
-            selectedId: _selectedId,
+            selectedId: _selectedItemId,
             onChanged: (int? id) {
-              _selectedId = id;
+              _selectedItemId = id;
               setState(() {});
             },
           ).show(context),
@@ -167,7 +168,22 @@ class _WalletPageState extends State<WalletPage> {
     return Scaffold(
       backgroundColor: _getBackgroundColor(context),
       appBar: _buildAppBar(context),
-      body: _buildBody(context),
+      body: BWTabBar(
+        items: [
+          BarItem(
+            icon: Icons.paid_outlined,
+            activeIcon: Icons.paid,
+            title: 'Coin',
+            body: _buildBody(context),
+          ),
+          BarItem(
+            icon: Icons.inventory_2_outlined,
+            activeIcon: Icons.inventory_2,
+            title: 'NFT',
+            body: const Text('NFT'),
+          ),
+        ],
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: _openConfirmDialog,
         child: const Icon(
