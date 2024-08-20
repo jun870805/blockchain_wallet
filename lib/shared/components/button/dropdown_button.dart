@@ -72,7 +72,31 @@ TextStyle _getDropdownMenuItemTextStyle(BuildContext context, bool isSelected) {
 }
 
 class BWDropdownButton extends StatelessWidget {
-  /// Custom App Bar
+  /// ## Dropdown Button 下拉式選單按鈕
+  /// ### Parameters:
+  /// * **items**(List<MenuItem>,_optional_): 選項
+  /// * **selectedId**(int,_optional_): 選中的選項
+  /// * **onChanged**(Function(int),_optional_): 更換選項(若是沒有帶代表按鈕Disable)
+  /// * **hintText**(String,_optional_): 說明文字
+  /// * **width**(double,_optional_): 寬度(若是沒有帶預設120)
+  ///
+  /// ### Example:
+  /// ```dart
+  /// BWDropdownButton(
+  ///   items: <MenuItem>[
+  ///     MenuItem(id: 0, title: 'Apple'),
+  ///     MenuItem(id: 1, title: 'Mango'),
+  ///     MenuItem(id: 2, title: 'Banana'),
+  ///     MenuItem(id: 3, title: 'Peach'),
+  ///   ],
+  ///   selectedId: _selectedId,
+  ///   onChanged: (int? id) {
+  ///     _selectedId = id;
+  ///     setState(() {});
+  ///   },
+  ///   hintText: 'Choose your favorite Fruit',
+  /// );
+  /// ```
   const BWDropdownButton({
     super.key,
     this.items = const [],
@@ -88,13 +112,13 @@ class BWDropdownButton extends StatelessWidget {
   /// 選中的選項
   final int? selectedId;
 
-  /// 更換選項(若是沒有帶此參數代表Disable)
+  /// 更換選項(若是沒有帶代表按鈕Disable)
   final Function(int?)? onChanged;
 
   /// 說明文字
   final String? hintText;
 
-  /// 寬度(若是沒有帶此參數預設120)
+  /// 寬度(若是沒有帶預設120)
   final double? width;
 
   Widget _buildHintText(BuildContext context) {
