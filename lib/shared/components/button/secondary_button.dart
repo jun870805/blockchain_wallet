@@ -55,7 +55,7 @@ EdgeInsets _getPadding(BuildContext context, ButtonSize size) {
 }
 
 const BorderRadius _kBorderRadius = BorderRadius.all(
-  Radius.circular(35.0),
+  Radius.circular(8.0),
 );
 
 Border _getButtonBorder(
