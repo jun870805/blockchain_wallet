@@ -130,23 +130,33 @@ class BWBottomSheet extends StatelessWidget {
   }
 
   Future<T?> show<T>(BuildContext context) async {
-    return showModalBottomSheet(
+    return showBWBottomSheet(
       context: context,
-      // 點擊外部區域是否關閉視窗
-      isDismissible: true,
-      // 啟用拖曳功能
-      enableDrag: true,
-      // 遮罩顏色
-      barrierColor: _getBarrierColor(context),
-      // 是否可滾動
-      isScrollControlled: true,
-      shape: const RoundedRectangleBorder(borderRadius: _kBorderRadius),
-      builder: (BuildContext context) {
-        return BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
-          child: this,
-        );
-      },
+      child: this,
     );
   }
+}
+
+Future<T?> showBWBottomSheet<T>({
+  required BuildContext context,
+  required Widget child,
+}) async {
+  return showModalBottomSheet(
+    context: context,
+    // 點擊外部區域是否關閉視窗
+    isDismissible: true,
+    // 啟用拖曳功能
+    enableDrag: true,
+    // 遮罩顏色
+    barrierColor: _getBarrierColor(context),
+    // 是否可滾動
+    isScrollControlled: true,
+    shape: const RoundedRectangleBorder(borderRadius: _kBorderRadius),
+    builder: (BuildContext context) {
+      return BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
+        child: child,
+      );
+    },
+  );
 }

@@ -5,5 +5,6 @@ export './button/button.dart';
 export './dialog/dialog.dart';
 export './divider.dart';
 export './list_view.dart';
+export './picker/picker.dart';
 export './scroll_bar.dart';
 export './toast.dart';

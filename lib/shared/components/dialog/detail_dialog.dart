@@ -144,9 +144,7 @@ class BWDetailDialog extends StatelessWidget {
   Future<T?> show<T extends Object?>(BuildContext context) async {
     return await showBWDialog(
       context: context,
-      builder: (BuildContext context) {
-        return this;
-      },
+      child: this,
     );
   }
 }

@@ -19,23 +19,24 @@ class WalletPage extends StatefulWidget {
 
 class _WalletPageState extends State<WalletPage> {
   int? _selectedId;
+  final List<MenuItem> _menuItem = [
+    MenuItem(
+      id: 0,
+      title: 'Apple',
+      image:
+          'https://ipfs.boxtradex.io/ipfs/Qma4uqU9rg7PoLGsWaUDmELesmC45bBUKp3xVH2SeaM9Bf?filename=sporte_logo.jpg',
+    ),
+    MenuItem(id: 1, title: 'Mango'),
+    MenuItem(id: 2, title: 'Banana'),
+    MenuItem(id: 3, title: 'Peach'),
+  ];
 
   PreferredSizeWidget _buildAppBar(BuildContext context) {
     return BWAppBar(
       // title: 'ssss',
       titleWidget: BWDropdownButton(
         width: 120,
-        items: <MenuItem>[
-          MenuItem(
-            id: 0,
-            title: 'Apple',
-            image:
-                'https://ipfs.boxtradex.io/ipfs/Qma4uqU9rg7PoLGsWaUDmELesmC45bBUKp3xVH2SeaM9Bf?filename=sporte_logo.jpg',
-          ),
-          MenuItem(id: 1, title: 'Mango'),
-          MenuItem(id: 2, title: 'Banana'),
-          MenuItem(id: 3, title: 'Peach'),
-        ],
+        items: _menuItem,
         selectedId: _selectedId,
         onChanged: (int? id) {
           _selectedId = id;
@@ -60,6 +61,20 @@ class _WalletPageState extends State<WalletPage> {
           text: '確認',
           onPressed: () => const BWToast(text: '妳好').show(context),
         ),
+        const SizedBox(height: 12),
+        BWSecondaryButton(
+          size: ButtonSize.M,
+          text: '選擇',
+          onPressed: () => BWSinglePicker(
+            items: _menuItem,
+            selectedId: _selectedId,
+            onChanged: (int? id) {
+              _selectedId = id;
+              setState(() {});
+            },
+          ).show(context),
+        ),
+        const SizedBox(height: 12),
         const BWTextButton(
           text: 'You have pushed the button this many times:',
         ),

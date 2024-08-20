@@ -95,7 +95,7 @@ Color _getBarrierColor(BuildContext context) {
 
 Future<T?> showBWDialog<T extends Object?>({
   required BuildContext context,
-  required WidgetBuilder builder,
+  required Widget child,
   RouteSettings? routeSettings,
 
   /// 點擊外部區域是否關閉視窗
@@ -115,18 +115,12 @@ Future<T?> showBWDialog<T extends Object?>({
       Animation<double> animation,
       Animation<double> secondaryAnimation,
     ) {
-      final Widget pageChild = Builder(builder: builder);
-
       return BackdropFilter(
         filter: ImageFilter.blur(
           sigmaX: 3,
           sigmaY: 3,
         ),
-        child: Builder(
-          builder: (BuildContext context) {
-            return SafeArea(child: pageChild);
-          },
-        ),
+        child: child,
       );
     },
   );

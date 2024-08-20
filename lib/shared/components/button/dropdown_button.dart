@@ -75,8 +75,8 @@ class BWDropdownButton extends StatelessWidget {
   /// ## Dropdown Button 下拉式選單按鈕
   /// ### Parameters:
   /// * **items**(List<MenuItem>,_optional_): 選項
-  /// * **selectedId**(int,_optional_): 選中的選項
-  /// * **onChanged**(Function(int),_optional_): 更換選項(若是沒有帶代表按鈕Disable)
+  /// * **selectedId**(int,_optional_): 選中的選項id
+  /// * **onChanged**(Function(int),_optional_): 回傳選中的選項id(若是沒有帶代表按鈕Disable)
   /// * **hintText**(String,_optional_): 說明文字
   /// * **width**(double,_optional_): 寬度(若是沒有帶預設120)
   ///
@@ -109,10 +109,10 @@ class BWDropdownButton extends StatelessWidget {
   /// 選項
   final List<MenuItem> items;
 
-  /// 選中的選項
+  /// 選中的選項id
   final int? selectedId;
 
-  /// 更換選項(若是沒有帶代表按鈕Disable)
+  /// 回傳選中的選項id(若是沒有帶代表按鈕Disable)
   final Function(int?)? onChanged;
 
   /// 說明文字
@@ -120,6 +120,9 @@ class BWDropdownButton extends StatelessWidget {
 
   /// 寬度(若是沒有帶預設120)
   final double? width;
+
+  /// 當onChanged為null時，自動disable按鈕
+  bool get enabled => onChanged != null;
 
   Widget _buildHintText(BuildContext context) {
     if (hintText == null) return const SizedBox();
@@ -147,12 +150,10 @@ class BWDropdownButton extends StatelessWidget {
   }
 
   Widget _buildSelectedItemText(BuildContext context, String title) {
-    bool isDisable = onChanged == null;
-
-    return Expanded(
+    return Flexible(
       child: Text(
         title,
-        style: _getSelectedItemTextStyle(context, isDisable),
+        style: _getSelectedItemTextStyle(context, !enabled),
         overflow: TextOverflow.ellipsis,
       ),
     );
@@ -205,6 +206,12 @@ class BWDropdownButton extends StatelessWidget {
     );
   }
 
+  void _onChange(int? id) {
+    if (onChanged != null && id != null) {
+      onChanged!(id);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -212,7 +219,7 @@ class BWDropdownButton extends StatelessWidget {
       child: DropdownButtonFormField<int>(
         value: selectedId,
         hint: _buildHintText(context),
-        onChanged: onChanged,
+        onChanged: enabled ? _onChange : null,
         isExpanded: true,
         icon: const Icon(Icons.keyboard_arrow_down),
         iconSize: _kDropdownButtonIconSize,
