@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import '../../styles/styles.dart';
 
@@ -28,12 +27,6 @@ Color _getBackgroundColor(BuildContext context) {
   return themeData.color.background;
 }
 
-List<BoxShadow> _getBoxShadow(BuildContext context) {
-  BWThemeData themeData = Theme.of(context).extension<BWThemeData>()!;
-
-  return themeData.shadow.extraLight;
-}
-
 class BWDialog extends StatelessWidget {
   /// ## BWDialog
   /// * Creates a dialog.
@@ -58,7 +51,6 @@ class BWDialog extends StatelessWidget {
         padding: _kDialogPadding,
         child: Container(
           decoration: BoxDecoration(
-            boxShadow: _getBoxShadow(context),
             borderRadius: _kBorderRadius,
             border: _getBorder(context),
             color: _getBackgroundColor(context),
@@ -90,7 +82,7 @@ const Duration _kDuration = Duration(milliseconds: 10);
 Color _getBarrierColor(BuildContext context) {
   BWThemeData themeData = Theme.of(context).extension<BWThemeData>()!;
 
-  return themeData.color.transparent1001;
+  return themeData.color.transparent1002;
 }
 
 Future<T?> showBWDialog<T extends Object?>({
@@ -115,13 +107,7 @@ Future<T?> showBWDialog<T extends Object?>({
       Animation<double> animation,
       Animation<double> secondaryAnimation,
     ) {
-      return BackdropFilter(
-        filter: ImageFilter.blur(
-          sigmaX: 3,
-          sigmaY: 3,
-        ),
-        child: child,
-      );
+      return child;
     },
   );
 }

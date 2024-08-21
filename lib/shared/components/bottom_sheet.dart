@@ -1,4 +1,3 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import '../styles/styles.dart';
 import 'components.dart';
@@ -30,7 +29,7 @@ Border _getBorder(BuildContext context) {
 Color _getBarrierColor(BuildContext context) {
   BWThemeData themeData = Theme.of(context).extension<BWThemeData>()!;
 
-  return themeData.color.transparent1001;
+  return themeData.color.transparent1002;
 }
 
 Color _getBackgroundColor(BuildContext context) {
@@ -43,12 +42,6 @@ Color _getDividerColor(BuildContext context) {
   BWThemeData themeData = Theme.of(context).extension<BWThemeData>()!;
 
   return themeData.color.transparent1002;
-}
-
-List<BoxShadow> _getBoxShadow(BuildContext context) {
-  BWThemeData themeData = Theme.of(context).extension<BWThemeData>()!;
-
-  return themeData.shadow.light;
 }
 
 class BWBottomSheet extends StatelessWidget {
@@ -121,7 +114,6 @@ class BWBottomSheet extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         color: _getBackgroundColor(context),
-        boxShadow: _getBoxShadow(context),
         border: _getBorder(context),
         borderRadius: _kBorderRadius,
       ),
@@ -153,10 +145,7 @@ Future<T?> showBWBottomSheet<T>({
     isScrollControlled: true,
     shape: const RoundedRectangleBorder(borderRadius: _kBorderRadius),
     builder: (BuildContext context) {
-      return BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
-        child: child,
-      );
+      return child;
     },
   );
 }
