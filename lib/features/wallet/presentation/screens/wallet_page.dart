@@ -48,11 +48,59 @@ class _WalletPageState extends State<WalletPage> {
     );
   }
 
+  Widget _buildOptions(BuildContext context) {
+    List<Widget> children = [];
+
+    children.add(const Expanded(
+      child: BWOptionButton(
+        icon: Icons.abc,
+        title: 'abc',
+      ),
+    ));
+
+    children.add(const Expanded(
+      child: BWOptionButton(
+        icon: Icons.ac_unit,
+        title: 'ac_unit',
+      ),
+    ));
+
+    children.add(const Expanded(
+      child: BWOptionButton(
+        icon: Icons.access_alarm_outlined,
+        title: 'access_alarm_outlined',
+      ),
+    ));
+
+    children.add(const Expanded(
+      child: BWOptionButton(
+        icon: Icons.account_balance_wallet_sharp,
+        title: 'account_balance_wallet_sharp',
+      ),
+    ));
+
+    children.add(Expanded(
+      child: BWOptionButton(
+        icon: Icons.adb_sharp,
+        title: 'adb_sharp',
+        onPressed: () => print('aaaa'),
+      ),
+    ));
+
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: children,
+    );
+  }
+
   Widget _buildBody(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 8.0),
       child: BWListView(
         children: <Widget>[
+          _buildOptions(context),
+          const SizedBox(height: 12),
           BWPrimaryButton(
             size: ButtonSize.M,
             text: '確認',
