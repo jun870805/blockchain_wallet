@@ -3,9 +3,13 @@ import 'package:flutter/material.dart';
 import '../../../core/models/models.dart';
 import '../components.dart';
 
-const double _kTabHeight = 24.0;
+const double _kTabHeight = 32.0;
 
 const double _kTabButtonIconSize = 16.0;
+
+const double _kDividerWidth = 24;
+
+const double _kDividerHeight = 3;
 
 const EdgeInsets _kTabBarPadding = EdgeInsets.only(
   left: 16.0,
@@ -19,6 +23,10 @@ const EdgeInsets _kTabButtonIconPadding = EdgeInsets.only(
   top: 1,
 );
 
+const BorderRadius _kDividerBorderRadius = BorderRadius.all(
+  Radius.circular(100.0),
+);
+
 Color _getBackgroundColor(BuildContext context) {
   BWThemeData themeData = Theme.of(context).extension<BWThemeData>()!;
 
@@ -29,6 +37,12 @@ Color _getTabButtonIconColor(BuildContext context, bool isSelected) {
   BWThemeData themeData = Theme.of(context).extension<BWThemeData>()!;
 
   return isSelected ? themeData.color.primary : themeData.color.title;
+}
+
+Color _getDividerColor(BuildContext context) {
+  BWThemeData themeData = Theme.of(context).extension<BWThemeData>()!;
+
+  return themeData.color.primary;
 }
 
 TextStyle _getTabButtonTitleTextStyle(BuildContext context, bool isSelected) {
@@ -129,24 +143,56 @@ class _BWTabBarState extends State<BWTabBar>
       children.add(_buildTabButtonTitle(context, index));
     }
 
-    return Padding(
-      padding: _kTabButtonPadding,
-      child: GestureDetector(
-        onTap: () => _tabController?.animateTo(index),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: children,
+    return GestureDetector(
+      onTap: () => _tabController?.animateTo(index),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: children,
+      ),
+    );
+  }
+
+  Widget _buildDivider(BuildContext context) {
+    return Center(
+      child: Container(
+        width: _kDividerWidth,
+        height: _kDividerHeight,
+        decoration: BoxDecoration(
+          color: _getDividerColor(context),
+          borderRadius: _kDividerBorderRadius,
         ),
       ),
     );
   }
 
-  Widget _buildTabBar(BuildContext context) {
+  Widget _buildTabBarItem(BuildContext context, int index) {
+    bool isSelected = index == _tabController?.index;
+
+    List<Widget> children = [];
+
+    children.add(_buildTabButton(context, index));
+    if (isSelected) {
+      children.add(const SizedBox(height: 4));
+      children.add(_buildDivider(context));
+    }
+
+    return Padding(
+      padding: _kTabButtonPadding,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: children,
+      ),
+    );
+  }
+
+  Widget _buildTabBarRow(BuildContext context) {
     return Container(
       height: _kTabHeight,
       width: double.infinity,
       color: _getBackgroundColor(context),
+      alignment: Alignment.topLeft,
       child: SingleChildScrollView(
         padding: _kTabBarPadding,
         physics: const ClampingScrollPhysics(),
@@ -156,7 +202,7 @@ class _BWTabBarState extends State<BWTabBar>
           crossAxisAlignment: CrossAxisAlignment.center,
           children: List.generate(
             widget.items.length,
-            (index) => _buildTabButton(context, index),
+            (index) => _buildTabBarItem(context, index),
           ),
         ),
       ),
@@ -176,7 +222,7 @@ class _BWTabBarState extends State<BWTabBar>
   Widget build(BuildContext context) {
     List<Widget> children = [];
 
-    children.add(_buildTabBar(context));
+    children.add(_buildTabBarRow(context));
     children.add(const SizedBox(height: 12));
     children.add(const BWDivider(type: DividerType.horizontal));
     children.add(_buildTabBarView(context));
