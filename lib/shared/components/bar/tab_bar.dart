@@ -1,10 +1,11 @@
 import 'package:blockchain_wallet/shared/styles/styles.dart';
 import 'package:flutter/material.dart';
 import '../../../core/models/models.dart';
+import '../components.dart';
 
 const double _kTabHeight = 24.0;
 
-const double _kTabButtonIconSize = 18.0;
+const double _kTabButtonIconSize = 16.0;
 
 const EdgeInsets _kTabBarPadding = EdgeInsets.only(
   left: 16.0,
@@ -15,7 +16,7 @@ const EdgeInsets _kTabButtonPadding = EdgeInsets.only(
 );
 
 const EdgeInsets _kTabButtonIconPadding = EdgeInsets.only(
-  top: 1.5,
+  top: 1,
 );
 
 Color _getBackgroundColor(BuildContext context) {
@@ -34,11 +35,11 @@ TextStyle _getTabButtonTitleTextStyle(BuildContext context, bool isSelected) {
   BWThemeData themeData = Theme.of(context).extension<BWThemeData>()!;
 
   if (isSelected) {
-    return themeData.typography.titleMediumBold.apply(
+    return themeData.typography.titleSmallBold.apply(
       color: themeData.color.primary,
     );
   } else {
-    return themeData.typography.titleMediumRegular.apply(
+    return themeData.typography.titleSmallRegular.apply(
       color: themeData.color.title,
     );
   }
@@ -134,7 +135,7 @@ class _BWTabBarState extends State<BWTabBar>
         onTap: () => _tabController?.animateTo(index),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: children,
         ),
       ),
@@ -176,7 +177,8 @@ class _BWTabBarState extends State<BWTabBar>
     List<Widget> children = [];
 
     children.add(_buildTabBar(context));
-    children.add(const SizedBox(height: 16));
+    children.add(const SizedBox(height: 12));
+    children.add(const BWDivider(type: DividerType.horizontal));
     children.add(_buildTabBarView(context));
 
     return Column(

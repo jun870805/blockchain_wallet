@@ -49,64 +49,67 @@ class _WalletPageState extends State<WalletPage> {
   }
 
   Widget _buildBody(BuildContext context) {
-    return BWListView(
-      children: <Widget>[
-        BWPrimaryButton(
-          size: ButtonSize.M,
-          text: '確認',
-          onPressed: _openDialog,
-        ),
-        const SizedBox(height: 12),
-        BWSecondaryButton(
-          size: ButtonSize.M,
-          text: '確認',
-          onPressed: () => const BWToast(text: '妳好').show(context),
-        ),
-        const SizedBox(height: 12),
-        BWSecondaryButton(
-          size: ButtonSize.M,
-          text: '選擇',
-          onPressed: () => BWSinglePicker(
-            items: _menuItem,
-            selectedId: _selectedItemId,
-            onChanged: (int? id) {
-              _selectedItemId = id;
-              setState(() {});
-            },
-          ).show(context),
-        ),
-        const SizedBox(height: 12),
-        const BWTextButton(
-          text: 'You have pushed the button this many times:',
-        ),
-        const SizedBox(height: 220),
-        const Text(
-          'You have pushed the button this many times:',
-          style: TextStyle(
-            fontSize: 18,
-            fontFamily: 'RobotoMono',
-            fontWeight: FontWeight.normal,
+    return Padding(
+      padding: const EdgeInsets.only(top: 8.0),
+      child: BWListView(
+        children: <Widget>[
+          BWPrimaryButton(
+            size: ButtonSize.M,
+            text: '確認',
+            onPressed: _openDialog,
           ),
-        ),
-        const SizedBox(height: 220),
-        const Text(
-          '妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好',
-          style: TextStyle(
-            fontFamily: 'MicrosoftJhengHei',
-            fontSize: 10,
-            fontWeight: FontWeight.normal,
+          const SizedBox(height: 12),
+          BWSecondaryButton(
+            size: ButtonSize.M,
+            text: '確認',
+            onPressed: () => const BWToast(text: '妳好').show(context),
           ),
-        ),
-        const SizedBox(height: 220),
-        const Text(
-          '妳好',
-          style: TextStyle(
-            fontSize: 18,
-            fontFamily: 'RobotoMono',
-            fontWeight: FontWeight.normal,
+          const SizedBox(height: 12),
+          BWSecondaryButton(
+            size: ButtonSize.M,
+            text: '選擇',
+            onPressed: () => BWSinglePicker(
+              items: _menuItem,
+              selectedId: _selectedItemId,
+              onChanged: (int? id) {
+                _selectedItemId = id;
+                setState(() {});
+              },
+            ).show(context),
           ),
-        ),
-      ],
+          const SizedBox(height: 12),
+          const BWTextButton(
+            text: 'You have pushed the button this many times:',
+          ),
+          const SizedBox(height: 220),
+          const Text(
+            'You have pushed the button this many times:',
+            style: TextStyle(
+              fontSize: 18,
+              fontFamily: 'RobotoMono',
+              fontWeight: FontWeight.normal,
+            ),
+          ),
+          const SizedBox(height: 220),
+          const Text(
+            '妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好妳好',
+            style: TextStyle(
+              fontFamily: 'MicrosoftJhengHei',
+              fontSize: 10,
+              fontWeight: FontWeight.normal,
+            ),
+          ),
+          const SizedBox(height: 220),
+          const Text(
+            '妳好',
+            style: TextStyle(
+              fontSize: 18,
+              fontFamily: 'RobotoMono',
+              fontWeight: FontWeight.normal,
+            ),
+          ),
+        ],
+      ),
     );
   }
 
