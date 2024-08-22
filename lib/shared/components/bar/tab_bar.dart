@@ -1,23 +1,12 @@
 import 'package:blockchain_wallet/shared/styles/styles.dart';
 import 'package:flutter/material.dart';
 import '../../../core/models/models.dart';
-import '../components.dart';
 
 const double _kTabHeight = 32.0;
 
 const double _kTabButtonIconSize = 16.0;
 
-const double _kDividerWidth = 24;
-
 const double _kDividerHeight = 3;
-
-const EdgeInsets _kTabBarPadding = EdgeInsets.only(
-  left: 16.0,
-);
-
-const EdgeInsets _kTabButtonPadding = EdgeInsets.only(
-  right: 16.0,
-);
 
 const EdgeInsets _kTabButtonIconPadding = EdgeInsets.only(
   top: 1,
@@ -154,14 +143,11 @@ class _BWTabBarState extends State<BWTabBar>
   }
 
   Widget _buildDivider(BuildContext context) {
-    return Center(
-      child: Container(
-        width: _kDividerWidth,
-        height: _kDividerHeight,
-        decoration: BoxDecoration(
-          color: _getDividerColor(context),
-          borderRadius: _kDividerBorderRadius,
-        ),
+    return Container(
+      height: _kDividerHeight,
+      decoration: BoxDecoration(
+        color: _getDividerColor(context),
+        borderRadius: _kDividerBorderRadius,
       ),
     );
   }
@@ -177,8 +163,7 @@ class _BWTabBarState extends State<BWTabBar>
       children.add(_buildDivider(context));
     }
 
-    return Padding(
-      padding: _kTabButtonPadding,
+    return IntrinsicWidth(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -193,17 +178,12 @@ class _BWTabBarState extends State<BWTabBar>
       width: double.infinity,
       color: _getBackgroundColor(context),
       alignment: Alignment.topLeft,
-      child: SingleChildScrollView(
-        padding: _kTabBarPadding,
-        physics: const ClampingScrollPhysics(),
-        scrollDirection: Axis.horizontal,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: List.generate(
-            widget.items.length,
-            (index) => _buildTabBarItem(context, index),
-          ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: List.generate(
+          widget.items.length,
+          (index) => _buildTabBarItem(context, index),
         ),
       ),
     );
@@ -224,7 +204,6 @@ class _BWTabBarState extends State<BWTabBar>
 
     children.add(_buildTabBarRow(context));
     children.add(const SizedBox(height: 12));
-    children.add(const BWDivider(type: DividerType.horizontal));
     children.add(_buildTabBarView(context));
 
     return Column(
