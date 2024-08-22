@@ -2,7 +2,7 @@ import 'package:blockchain_wallet/shared/styles/styles.dart';
 import 'package:flutter/material.dart';
 import '../../../core/models/models.dart';
 
-const double _kTabHeight = 32.0;
+const double _kTabHeight = 40.0;
 
 const double _kTabButtonIconSize = 16.0;
 
@@ -32,6 +32,12 @@ Color _getDividerColor(BuildContext context) {
   BWThemeData themeData = Theme.of(context).extension<BWThemeData>()!;
 
   return themeData.color.primary;
+}
+
+List<BoxShadow> _getTabBarRowShadow(BuildContext context) {
+  BWThemeData themeData = Theme.of(context).extension<BWThemeData>()!;
+
+  return themeData.shadow.extraLight;
 }
 
 TextStyle _getTabButtonTitleTextStyle(BuildContext context, bool isSelected) {
@@ -176,8 +182,11 @@ class _BWTabBarState extends State<BWTabBar>
     return Container(
       height: _kTabHeight,
       width: double.infinity,
-      color: _getBackgroundColor(context),
       alignment: Alignment.topLeft,
+      decoration: BoxDecoration(
+        color: _getBackgroundColor(context),
+        boxShadow: _getTabBarRowShadow(context),
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -203,7 +212,6 @@ class _BWTabBarState extends State<BWTabBar>
     List<Widget> children = [];
 
     children.add(_buildTabBarRow(context));
-    children.add(const SizedBox(height: 12));
     children.add(_buildTabBarView(context));
 
     return Column(
