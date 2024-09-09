@@ -37,7 +37,7 @@ Color _getDividerColor(BuildContext context) {
 List<BoxShadow> _getTabBarRowShadow(BuildContext context) {
   BWThemeData themeData = Theme.of(context).extension<BWThemeData>()!;
 
-  return themeData.shadow.extraLight;
+  return themeData.shadow.extraLightOnlyBottom;
 }
 
 TextStyle _getTabButtonTitleTextStyle(BuildContext context, bool isSelected) {

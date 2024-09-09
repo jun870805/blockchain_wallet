@@ -11,6 +11,14 @@ class BWShadow {
         offset: Offset(0, 2),
       ),
     ],
+    this.extraLightOnlyBottom = const [
+      BoxShadow(
+        color: Color.fromRGBO(0, 0, 0, 0.05),
+        blurRadius: 1,
+        spreadRadius: 1,
+        offset: Offset(0, 2),
+      ),
+    ],
     this.light = const [
       BoxShadow(
         color: Color.fromRGBO(0, 0, 0, 0.12),
@@ -54,6 +62,14 @@ class BWShadow {
         offset: Offset(0, 2),
       ),
     ],
+    this.extraLightOnlyBottom = const [
+      BoxShadow(
+        color: Color.fromRGBO(255, 255, 255, 0.05),
+        blurRadius: 1,
+        spreadRadius: 1,
+        offset: Offset(0, 2),
+      ),
+    ],
     this.light = const [
       BoxShadow(
         color: Color.fromRGBO(255, 255, 255, 0.12),
@@ -89,6 +105,7 @@ class BWShadow {
   });
 
   final List<BoxShadow> extraLight;
+  final List<BoxShadow> extraLightOnlyBottom;
   final List<BoxShadow> light;
   final List<BoxShadow> medium;
   final List<BoxShadow> heavy;

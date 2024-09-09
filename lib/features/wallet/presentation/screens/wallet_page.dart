@@ -223,7 +223,7 @@ class _WalletPageState extends State<WalletPage> {
           height: 200,
           color: Colors.red,
         ),
-        topHeight: 200,
+        topHeight: 300,
         items: [
           BarItem(
             icon: Icons.paid_outlined,
