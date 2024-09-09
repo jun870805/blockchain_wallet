@@ -217,7 +217,7 @@ class _WalletPageState extends State<WalletPage> {
     return Scaffold(
       backgroundColor: _getBackgroundColor(context),
       appBar: _buildAppBar(context),
-      body: BWTabBar(
+      body: BWTabBarLayout(
         items: [
           BarItem(
             icon: Icons.paid_outlined,

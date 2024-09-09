@@ -37,7 +37,7 @@ class BWNavigationBar extends StatefulWidget {
   /// ## Navigation Bar (包含上方body view)
   ///
   /// ### Parameters:
-  /// * **items**(List<NavigationBarItem>,***required***): 項目
+  /// * **items**(List<BarItem>,***required***): 項目
   ///
   /// ### Example:
   /// ```dart

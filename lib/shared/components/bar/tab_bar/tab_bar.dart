@@ -1,6 +1,6 @@
 import 'package:blockchain_wallet/shared/styles/styles.dart';
 import 'package:flutter/material.dart';
-import '../../../core/models/models.dart';
+import '../../../../core/models/models.dart';
 
 const double _kTabHeight = 40.0;
 
@@ -54,58 +54,37 @@ TextStyle _getTabButtonTitleTextStyle(BuildContext context, bool isSelected) {
   }
 }
 
-class BWTabBar extends StatefulWidget {
-  /// ## Tab Bar (包含下方body view)
+class BWTabBar extends StatelessWidget {
+  /// ## Tab Bar
   ///
   /// ### Parameters:
-  /// * **items**(List<NavigationBarItem>,***required***): 項目
+  /// * **items**(List<BarItem>,***required***): 項目
+  /// * **controller**(TabController,***required***): 控制器
   ///
   /// ### Example:
   /// ```dart
   /// BWTabBar(
-  ///   items: [],;
-  ///   }
+  ///   items: [],
+  ///   controller: TabController(),
   /// );
   /// ```
   const BWTabBar({
     super.key,
     required this.items,
+    required this.controller,
   });
 
   /// 項目
   final List<BarItem> items;
 
-  @override
-  State<BWTabBar> createState() => _BWTabBarState();
-}
-
-class _BWTabBarState extends State<BWTabBar>
-    with SingleTickerProviderStateMixin {
-  TabController? _tabController;
-
-  @override
-  void initState() {
-    super.initState();
-    _tabController = TabController(
-      length: widget.items.length,
-      vsync: this,
-    );
-    _tabController?.addListener(() => setState(() {}));
-  }
-
-  @override
-  void dispose() {
-    _tabController?.dispose();
-    _tabController?.removeListener(() => setState(() {}));
-
-    super.dispose();
-  }
+  /// 控制器
+  final TabController controller;
 
   Widget _buildTabButtonIcon(BuildContext context, int index) {
-    bool isSelected = index == _tabController?.index;
-    IconData icon = widget.items[index].icon!;
-    if (isSelected && widget.items[index].activeIcon != null) {
-      icon = widget.items[index].activeIcon!;
+    bool isSelected = index == controller.index;
+    IconData icon = items[index].icon!;
+    if (isSelected && items[index].activeIcon != null) {
+      icon = items[index].activeIcon!;
     }
 
     return Padding(
@@ -119,10 +98,10 @@ class _BWTabBarState extends State<BWTabBar>
   }
 
   Widget _buildTabButtonTitle(BuildContext context, int index) {
-    bool isSelected = index == _tabController?.index;
+    bool isSelected = index == controller.index;
 
     return Text(
-      widget.items[index].title!,
+      items[index].title!,
       style: _getTabButtonTitleTextStyle(context, isSelected),
     );
   }
@@ -130,16 +109,16 @@ class _BWTabBarState extends State<BWTabBar>
   Widget _buildTabButton(BuildContext context, int index) {
     List<Widget> children = [];
 
-    if (widget.items[index].icon != null) {
+    if (items[index].icon != null) {
       children.add(_buildTabButtonIcon(context, index));
       children.add(const SizedBox(width: 4));
     }
-    if (widget.items[index].title != null) {
+    if (items[index].title != null) {
       children.add(_buildTabButtonTitle(context, index));
     }
 
     return GestureDetector(
-      onTap: () => _tabController?.animateTo(index),
+      onTap: () => controller.animateTo(index),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -159,7 +138,7 @@ class _BWTabBarState extends State<BWTabBar>
   }
 
   Widget _buildTabBarItem(BuildContext context, int index) {
-    bool isSelected = index == _tabController?.index;
+    bool isSelected = index == controller.index;
 
     List<Widget> children = [];
 
@@ -178,7 +157,8 @@ class _BWTabBarState extends State<BWTabBar>
     );
   }
 
-  Widget _buildTabBarRow(BuildContext context) {
+  @override
+  Widget build(BuildContext context) {
     return Container(
       height: _kTabHeight,
       width: double.infinity,
@@ -191,33 +171,10 @@ class _BWTabBarState extends State<BWTabBar>
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: List.generate(
-          widget.items.length,
+          items.length,
           (index) => _buildTabBarItem(context, index),
         ),
       ),
-    );
-  }
-
-  Widget _buildTabBarView(BuildContext context) {
-    return Expanded(
-      child: TabBarView(
-        controller: _tabController,
-        children: widget.items.map((e) => e.body).toList(),
-      ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    List<Widget> children = [];
-
-    children.add(_buildTabBarRow(context));
-    children.add(_buildTabBarView(context));
-
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: children,
     );
   }
 }
