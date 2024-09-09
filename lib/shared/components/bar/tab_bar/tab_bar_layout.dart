@@ -7,6 +7,8 @@ class BWTabBarLayout extends StatefulWidget {
   ///
   /// ### Parameters:
   /// * **items**(List<BarItem>,***required***): 項目
+  /// * **top**(List<BarItem>,_optional_): 滾動後要消失的view(可以不填)
+  /// * **topHeight**(List<BarItem>,_optional_): top view的高度
   ///
   /// ### Example:
   /// ```dart
@@ -17,10 +19,18 @@ class BWTabBarLayout extends StatefulWidget {
   const BWTabBarLayout({
     super.key,
     required this.items,
+    this.top,
+    this.topHeight = 0,
   });
 
   /// 項目
   final List<BarItem> items;
+
+  /// 滾動後要消失的view(可以不填)
+  final Widget? top;
+
+  /// top view的高度
+  final double? topHeight;
 
   @override
   State<BWTabBarLayout> createState() => _BWTabBarLayoutState();
@@ -64,15 +74,12 @@ class _BWTabBarLayoutState extends State<BWTabBarLayout>
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> children = [];
-
-    children.add(_buildTabBar(context));
-    children.add(_buildTabBarView(context));
-
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: children,
+    return BWStickyLayout(
+      top: widget.top,
+      topHeight: widget.topHeight,
+      header: _buildTabBar(context),
+      headerHeight: kTabBarHeight,
+      body: _buildTabBarView(context),
     );
   }
 }

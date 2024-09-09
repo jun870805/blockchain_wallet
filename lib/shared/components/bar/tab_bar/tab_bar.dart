@@ -2,7 +2,7 @@ import 'package:blockchain_wallet/shared/styles/styles.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/models/models.dart';
 
-const double _kTabHeight = 40.0;
+const double kTabBarHeight = 40.0;
 
 const double _kTabButtonIconSize = 16.0;
 
@@ -59,7 +59,7 @@ class BWTabBar extends StatelessWidget {
   ///
   /// ### Parameters:
   /// * **items**(List<BarItem>,***required***): 項目
-  /// * **controller**(TabController,***required***): 控制器
+  /// * **controller**(TabController,***required***): tab控制器
   ///
   /// ### Example:
   /// ```dart
@@ -160,7 +160,7 @@ class BWTabBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: _kTabHeight,
+      height: kTabBarHeight,
       width: double.infinity,
       alignment: Alignment.topLeft,
       decoration: BoxDecoration(

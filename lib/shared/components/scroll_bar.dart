@@ -16,7 +16,7 @@ class BWScrollBar extends StatelessWidget {
   ///
   /// ### Parameters:
   /// * **child**(Widget,***required***): 內容
-  /// * **controller**(ScrollController,***required***): 滾輪控制
+  /// * **controller**(ScrollController,_optional_): 滾輪控制
   /// * **horizontalPadding**(double,_optional_): 橫向Padding
   ///
   /// ### Example:
@@ -29,7 +29,7 @@ class BWScrollBar extends StatelessWidget {
   const BWScrollBar({
     super.key,
     required this.child,
-    required this.controller,
+    this.controller,
     this.horizontalPadding = 0,
   }) : assert(horizontalPadding >= 0);
 
@@ -37,7 +37,7 @@ class BWScrollBar extends StatelessWidget {
   final Widget child;
 
   /// 滾輪控制
-  final ScrollController controller;
+  final ScrollController? controller;
 
   /// 橫向Padding
   final double horizontalPadding;

@@ -6,7 +6,7 @@ class BWTabBarView extends StatelessWidget {
   ///
   /// ### Parameters:
   /// * **items**(List<BarItem>,***required***): 項目
-  /// * **controller**(TabController,***required***): 控制器
+  /// * **controller**(TabController,***required***): tab控制器
   ///
   /// ### Example:
   /// ```dart
@@ -29,11 +29,9 @@ class BWTabBarView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: TabBarView(
-        controller: controller,
-        children: items.map((e) => e.body).toList(),
-      ),
+    return TabBarView(
+      controller: controller,
+      children: items.map((e) => e.body).toList(),
     );
   }
 }

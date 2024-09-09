@@ -218,6 +218,12 @@ class _WalletPageState extends State<WalletPage> {
       backgroundColor: _getBackgroundColor(context),
       appBar: _buildAppBar(context),
       body: BWTabBarLayout(
+        top: Container(
+          width: double.infinity,
+          height: 200,
+          color: Colors.red,
+        ),
+        topHeight: 200,
         items: [
           BarItem(
             icon: Icons.paid_outlined,
