@@ -164,9 +164,9 @@ class BWTabBar extends StatelessWidget {
       width: double.infinity,
       alignment: Alignment.topLeft,
       decoration: BoxDecoration(
-        color: _getBackgroundColor(context),
-        boxShadow: _getTabBarRowShadow(context),
-      ),
+          // color: _getBackgroundColor(context),
+          // boxShadow: _getTabBarRowShadow(context),
+          ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.center,

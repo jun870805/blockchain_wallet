@@ -80,12 +80,17 @@ class BWStickyLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return NestedScrollView(
+      physics: const ClampingScrollPhysics(),
+      floatHeaderSlivers: true,
       headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
         return [
           _buildSliverWidget(context),
         ];
       },
-      body: body,
+      body: Padding(
+        padding: EdgeInsets.only(top: headerHeight!),
+        child: body,
+      ),
     );
   }
 }
