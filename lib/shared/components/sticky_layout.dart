@@ -87,10 +87,7 @@ class BWStickyLayout extends StatelessWidget {
           _buildSliverWidget(context),
         ];
       },
-      body: Padding(
-        padding: EdgeInsets.only(top: headerHeight!),
-        child: body,
-      ),
+      body: body,
     );
   }
 }
